@@ -137,6 +137,13 @@ function calcular() {
     const total = (valorUnitario * peso).toFixed(2);
     resultadoDiv.innerText = "R$ " + total.replace(".", ",");
 
+    if (typeof gtag === "function") {
+    gtag('event', 'clique_whatsapp', {
+        'event_category': 'CalculadoraOuro',
+        'event_label': 'Botão Calcular e Enviar WhatsApp'
+    });
+}
+
     const mensagem = `Olá! Tenho ${peso}g de ouro ${teor}K. Quanto receberei?\nValor estimado: R$ ${total.replace(".", ",")}`;
     const numeroWhatsApp = "5511989122900";
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
